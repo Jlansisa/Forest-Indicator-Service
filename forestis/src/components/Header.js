@@ -7,14 +7,6 @@ class Header extends Component {
                 <div className="metsämittari">
                     Metsämittari
                 </div>
-
-                <div className="scenarios">
-                            <a>Skenaariot</a>
-                    </div>
-
-                <div className="indicators">
-                            <a>Indikaattorit</a>
-                    </div>
             </header>
         )
     }

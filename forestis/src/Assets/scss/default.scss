@@ -8,36 +8,35 @@ Header {
     color: $black;
     height: 100px;
 
-.header {
-    position: absolute;
-    top: 50px; left: 15px;
-    @include translateY(-50%);
+    .metsämittari {
+        position: absolute;
+        top: 10px; left: 15px;
+    }
 }
 
-.scenarios {
+Scenarios {
     position: absolute;
     top: 50px; left: 15px;
-    @include translateY(-50%);
 
-    a   {
+    .scenarios {
+        position: absolute;
+        top: 10px; left: 15px;
         font-size: 19px;
         line-height: normal;
         color: $white;
-        }
     }
+}
     
-.indicators {
+Indicators {
     position: absolute;
     top: 50px; left: 250px;
-    @include translateY(-50%);
 
-
-        a   {
-            font-size: 19px;
-            line-height: normal;
-            color: $white;
-            }
-
-        }
-    
+    .indicators {
+        position: absolute;
+        top: 10px; left: 15px;
+        font-size: 19px;
+        line-height: normal;
+        color: $white;
+    }
 }
+    

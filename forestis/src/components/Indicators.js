@@ -3,9 +3,11 @@ import React, { Component } from 'react'
 class Indicators extends Component {
     render () {
         return (
-            <div>
-                
-            </div>
+            <indicators>
+                <div className="indicators">
+                    Indikaattorit
+                </div>
+            </indicators>
         )
     }
 }

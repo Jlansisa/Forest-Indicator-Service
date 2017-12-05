@@ -14,17 +14,23 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container-fluid">
-        <div className="row">
-        <div className="col-md-8">
-          <Header/>
-            <Scenarios/>
-            <Indicators/>
+          <div className="row">
+            <div className="col-md-10">
+              <Header/>
+            </div>
+          </div>
+
+          <div className="row">
+                <Scenarios/>
+                <Indicators/>
+          </div>
         </div>
-        </div>
-        </div>
-      </div>
-    );
+
+    </div>
+
+        );
   }
 }
+
 
 export default App;
