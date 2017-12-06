@@ -3,10 +3,10 @@
 Header {
     position: relative;
     display: block;
-    width: 50%;
+    width: 120%;
     background: $light-green;
     color: $black;
-    height: 100px;
+    height: 50px;
 
     .metsämittari {
         position: absolute;
@@ -15,8 +15,12 @@ Header {
 }
 
 Scenarios {
-    position: absolute;
-    top: 50px; left: 15px;
+    position: relative;
+    top: 4px; left: 15px;
+    display: block;
+    width: 20%;
+    background: $dark-green;
+    height: 500px;
 
     .scenarios {
         position: absolute;
@@ -29,7 +33,11 @@ Scenarios {
     
 Indicators {
     position: absolute;
-    top: 50px; left: 250px;
+    top: 54px; left: 290px;
+    display: block;
+    width: 20%;
+    background: $dark-green;
+    height: 500px;
 
     .indicators {
         position: absolute;

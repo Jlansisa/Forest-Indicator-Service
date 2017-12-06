@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import Scenarios from './components/Scenarios';
 import Indicators from './components/Indicators';
+import Chart from './components/Chart';
 //Assets
 import './Assets/css/default.min.css';
 
