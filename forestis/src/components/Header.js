@@ -5,7 +5,7 @@ class Header extends Component {
         return (
             <header>
                 <div className="metsämittari">
-                    Metsämittari
+                <h2>Metsämittari</h2>
                 </div>
             </header>
         )
