@@ -11,6 +11,13 @@ import './Assets/css/default.min.css';
 
 class App extends Component {
 
+  constructor(props)
+  {
+    super(props);
+
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -26,12 +33,10 @@ class App extends Component {
                 <Indicators/>
           </div>
         </div>
-
     </div>
 
-        );
+    );
   }
 }
-
 
 export default App;
