@@ -1,5 +1,6 @@
 @import "config.scss";
 
+
 Header {
     position: relative;
     display: block;
@@ -10,7 +11,7 @@ Header {
 
     .metsämittari {
         position: absolute;
-        top: -5px; left: 40%;
+        top: -5px; left: 45%;
     }
 }
 
@@ -22,14 +23,36 @@ Scenarios {
     background: $dark-green;
     height: 500px;
 
-    .scenarios {
+    .skenaariot {
         position: absolute;
-        top: 1px; left: 15px;
-        font-size: 10px;
-        line-height: normal;
+        top: 1px; left: 5px;
+        font-size: 20px;
         color: $white;
     }
-
+    
+    .aluetaso {
+        position: absolute;
+        top: 35px; left: 15px;
+        font-size: 15px;
+        color: $white;
+    }
+    
+    .alue {
+        position: absolute;
+        top: 95px; left: 15px;
+        font-size: 15px;
+        color: $white;
+    }
+    .select1 {
+        position: absolute;
+        top: 60px; left: 15px;
+        font-size: 15px;
+    }
+    .select2 {
+        position: absolute;
+        top: 120px; left: 15px;
+        font-size: 15px;
+    }
 }
     
 Indicators {
@@ -40,24 +63,33 @@ Indicators {
     background: $dark-green;
     height: 500px;
 
-    .indicators {
+    .indikaattorit {
         position: absolute;
-        top: 1px; left: 15px;
-        font-size: 10px;
-        line-height: normal;
+        top: 1px; left: 5px;
+        font-size: 20px;
         color: $white;
-    }
-    .dropdown {
-        position: absolute;
-        top: 40px; left: 35px;
-        font-size: 10px;
-        color: $white;
-    }
-    button{
-        position: static;
-        line-height: normal;
-        color: $black;   
     }
 
+    .puuntuotanto {
+        position: absolute;
+        top: 35px; left: 15px;
+        font-size: 15px;
+        color: $white;
+    }
+
+
+    .select {
+        position: absolute;
+        top: 60px; left: 15px;
+        font-size: 15px;
+    }
 }
+
+Chart {
+    position: absolute;
+    top: 50px; left: 600px;
+    width: 50%;
+}
+
+
     

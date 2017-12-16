@@ -11,14 +11,20 @@ import './Assets/css/default.min.css';
 
 class App extends Component {
 
-  constructor(props)
+ constructor(props)
   {
     super(props);
 
-  }
+/*      this.state = {
+        regionlevels: []
+      };*/
 
+    }
 
   render() {
+
+ //   let view = (<Chart items={ this.state.regionlevels }/>);
+
     return (
       <div className="App">
         <div className="container-fluid">
@@ -31,10 +37,11 @@ class App extends Component {
           <div className="row">
                 <Scenarios/>
                 <Indicators/>
+                <Chart/>
           </div>
         </div>
     </div>
-
+  
     );
   }
 }
