@@ -11,16 +11,6 @@ import './Assets/css/default.min.css';
 
 class App extends Component {
 
- constructor(props)
-  {
-    super(props);
-
-/*      this.state = {
-        regionlevels: []
-      };*/
-
-    }
-
   render() {
 
  //   let view = (<Chart items={ this.state.regionlevels }/>);

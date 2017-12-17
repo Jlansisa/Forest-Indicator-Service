@@ -7,8 +7,9 @@ class Scenarios extends Component {
         super(props);
 
         this.state = {
-
-            regionlevels: []
+            regionlevels: [],
+            regions1: [],
+            regions2: [],
         } 
     }
 
@@ -20,14 +21,34 @@ class Scenarios extends Component {
                 console.log(response)
             
                 this.setState({ regionlevels: response.data });
-            });
+            }),
 
+             Axios.get('http://melatupa.azurewebsites.net/regionLevels/2/regions')
+            .then(response => { 
+                console.log(response)
+            
+                this.setState({ regions2: response.data })
+            }),
+            
+             Axios.get('http://melatupa.azurewebsites.net/regionLevels/1/regions')
+            .then(response => { 
+                console.log(response)
+            
+                this.setState({ regions1: response.data });
+            });
+    }
+    
+    ChosenOption(e){
+        this.setState({ ChosenOption: e.target.value })
     }
 
     render () {
 
-        return (
+        let regionlevels = this.state.regionlevels;
+        var alue1 = this.state.regions1;
+        var alue2 = this.state.regions2;
 
+        return (
             <scenarios>
             <div className="scenarios">
                 <div className="skenaariot">
@@ -40,18 +61,24 @@ class Scenarios extends Component {
                 <div className="alue">Alue</div>
             </div>
 
+
             <div className="select1">
                 <select>
                     {
-                    this.state.regionlevels.map( e => <option key={ e.id } >{ e.name }</option>)
+                    regionlevels.map( e => <option key={ e.id }>{ e.name }</option>)
                     }
                 </select>
             </div>
 
             <div className="select2">
-                <select>
+                <select onChange={this.ChosenOption.bind(this)}>
                     {
-                    this.state.regionlevels.map( e => <option key={ e.id } >{ e.name }</option>)
+                    regionlevels.map( e => {
+                        if (<option key={ e.id === "1" }/>)
+                        return alue1.map(e => <option key={ e.id } >{ e.name }</option>)
+                        else
+                        return alue2.map(e => <option key={ e.id } >{ e.name }</option>)
+                    })
                     }
                 </select>
             </div>
