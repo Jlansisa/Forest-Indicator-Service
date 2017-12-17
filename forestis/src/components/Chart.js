@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
-import Scenarios from './Scenarios';
 const ReactHighcharts = require('react-highcharts');
 
 class Chart extends Component {
 
     render () {
+        const { regionlevels } = this.props;
 
-        const { regionlevels, ...rest } = this.props;
+        let processedItems = []; 
+
+ /*       regionlevels.forEach(element => {
+            let todoIndex = processedItems.findIndex(item => item.name === element.type);
+            if(todoIndex === -1)
+            {
+                processedItems.push({ 
+                    name: element.type,
+                    y: 1
+                });
+            }
+            else
+            {
+                    processedItems[todoIndex].y++;
+            }
+        }); */
 
         const config = {
             data: {
@@ -49,7 +64,7 @@ class Chart extends Component {
                 endOnTick: false,
                 showLastLabel: true,
                 title: {
-                    text: 'Frequency (%)'
+                    text: 'skenaario'
                 },
                 labels: {
                     formatter: function () {
@@ -60,7 +75,7 @@ class Chart extends Component {
             },
         
             tooltip: {
-                valueSuffix: '%'
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
         
             plotOptions: {
@@ -69,10 +84,29 @@ class Chart extends Component {
                     shadow: false,
                     groupPadding: 0,
                     pointPlacement: 'on',
-                    name: 'Brands',
+                    name: 'indikaattorit',
                     colorByPoint: true,
                 }]
-            }
+            },
+
+            series: [{
+                name: 'indikaattorit',
+                colorByPoint: true,
+                data: processedItems
+                [{
+                        name: "foo",
+                        y: 1
+                    },
+                    {
+                        name: "doo",
+                        y: 2
+                    },
+                    {
+                        name: "boo",
+                        y: 3
+                    
+                }]
+            }]
         };
 
         return (

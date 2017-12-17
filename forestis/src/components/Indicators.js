@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
+import Scenarios from './Scenarios';
 
 class Indicators extends Component {
 
@@ -7,24 +8,35 @@ class Indicators extends Component {
         super(props);
 
         this.state = {
-
-            indicatorCategories: []
+            scenarioitems1: [],
+            scenarioitems2: []
         } 
     }
 
     componentDidMount() {
 
         //tilan kautta
-        Axios.get('http://melatupa.azurewebsites.net/scenarioCollection')
+        Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/3/region/1')
+        .then(response => { 
+            console.log(response)
+        
+            this.setState({ scenarioitems1: response.data });
+        }), 
+            Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/4/region/1')
             .then(response => { 
                 console.log(response)
             
-                this.setState({ indicatorCategories: response.data });
+                this.setState({ scenarioitems2: response.data });
             });
-
     }
 
     render () {
+
+        const { regionlevels } = this.props;
+
+        var scenarioitems1 = this.state.scenarioitems1;
+        var scenarioitems2 = this.state.scenarioitems2;
+
         return (
             <indicators>
                 <div className="indicators">
@@ -38,9 +50,9 @@ class Indicators extends Component {
 
                     <div className="select">
                         <select>
-                            {
-                            this.state.indicatorCategories.map( e => <option key={ e.id } >{ e.name }</option>)
-                            }
+                        {
+                          scenarioitems1.map(e => <option key={ e.id } >{ e.name }</option>)
+                        }
                         </select>
                     </div>
                 </div>

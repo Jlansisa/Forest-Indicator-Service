@@ -11,9 +11,19 @@ import './Assets/css/default.min.css';
 
 class App extends Component {
 
+ /* constructor(props)
+  {
+    super(props);
+
+    this.state = {
+      view: "tasks"
+    };
+  } */
+
   render() {
 
- //   let view = (<Chart items={ this.state.regionlevels }/>);
+   /* let view;
+      view = (<Chart regionlevels={ this.state.regionlevels }/>);*/
 
     return (
       <div className="App">

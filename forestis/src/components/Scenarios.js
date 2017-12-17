@@ -9,8 +9,9 @@ class Scenarios extends Component {
         this.state = {
             regionlevels: [],
             regions1: [],
-            regions2: [],
-        } 
+            regions2: []
+        };
+        this.ChosenOption = this.ChosenOption.bind(this);
     }
 
     componentDidMount() {
@@ -22,29 +23,31 @@ class Scenarios extends Component {
             
                 this.setState({ regionlevels: response.data });
             }),
-
+            Axios.get('http://melatupa.azurewebsites.net/regionLevels/1/regions')
+            .then(response => { 
+                console.log(response)
+            
+                this.setState({ regions1: response.data });
+            }),
              Axios.get('http://melatupa.azurewebsites.net/regionLevels/2/regions')
             .then(response => { 
                 console.log(response)
             
                 this.setState({ regions2: response.data })
-            }),
-            
-             Axios.get('http://melatupa.azurewebsites.net/regionLevels/1/regions')
-            .then(response => { 
-                console.log(response)
-            
-                this.setState({ regions1: response.data });
             });
+
     }
     
     ChosenOption(e){
         this.setState({ ChosenOption: e.target.value })
     }
 
-    render () {
 
-        let regionlevels = this.state.regionlevels;
+    render () {
+        
+        const { regionlevels } = this.props;
+
+        let regions = this.state.regionlevels;
         var alue1 = this.state.regions1;
         var alue2 = this.state.regions2;
 
@@ -56,16 +59,23 @@ class Scenarios extends Component {
                 </div>
 
                 <div className="aluetaso">
-                <div>Aluetaso</div>
+                <div> Alue</div>
                 </div>
-                <div className="alue">Alue</div>
+
+                <div className="alue">
+                <div>Alue</div>
+                </div>
+
+                <div className="skenaariokokoelma">
+                <div>Skenaariokokoelma</div>
+                </div>
             </div>
 
 
             <div className="select1">
                 <select>
                     {
-                    regionlevels.map( e => <option key={ e.id }>{ e.name }</option>)
+                    regions.map( e => <option key={ e.id }>{ e.name }</option>)
                     }
                 </select>
             </div>
@@ -73,7 +83,7 @@ class Scenarios extends Component {
             <div className="select2">
                 <select onChange={this.ChosenOption.bind(this)}>
                     {
-                    regionlevels.map( e => {
+                    regions.map( e => {
                         if (<option key={ e.id === "1" }/>)
                         return alue1.map(e => <option key={ e.id } >{ e.name }</option>)
                         else
