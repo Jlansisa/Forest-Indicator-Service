@@ -16,6 +16,7 @@ class App extends Component {
   {
     super(props);
 
+    // Tilaa ylläpidetään tässä app.js juurikomponentissa ja sitten välitetään tiedot propsien kautta lapsikomponenteille, kts. render metodi
     this.state = {
       regionLevels: [],
       regions: [],

@@ -77,11 +77,11 @@ Indicators {
     background: $dark-green;
     height: 500px;
 
-    .indikaattorit {
-        position: absolute;
-        top: 1px; left: 5px;
+    p{
+        position: relative;
+        top: 0px; left: 5px;
         font-size: 20px;
-        color: $white;
+        color: $white; 
     }
 
     .puuntuotanto {
@@ -90,9 +90,9 @@ Indicators {
             top: 10px; left: 0px;
             font-size: 12px;
             color: $white; 
-        }s
+        }
         position: absolute;
-        top: 35px; left: 15px;
+        top: 30px; left: 15px;
         font-size: 15px;
         color: $white;
     }
@@ -103,6 +103,7 @@ Chart {
     top: 50px; left: 600px;
     width: 50%;
 }
+
 
 
     
