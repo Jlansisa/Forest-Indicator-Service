@@ -8,10 +8,6 @@ class Scenarios extends Component {
         this.regionLevelSelectChange = this.regionLevelSelectChange.bind(this);
     }
     
-    ChosenOption(e){
-        this.setState({ ChosenOption: e.target.value })
-    }
-
     regionLevelSelectChange(event)
     {        
         this.props.selectRegionLevel(event.target.value);

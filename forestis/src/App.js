@@ -37,7 +37,6 @@ class App extends Component {
           this.setState({ regionLevels: response.data });
           // Ensimmäisellä kerralla valitaan automaattisesti ensimmäinen aluetaso, jolle haetaan alue
           this.selectRegionLevel(response.data[0].id);
-          this.selectScenarioCollection(response.data[0].id);
       });
     }
 
@@ -45,11 +44,12 @@ class App extends Component {
       Axios.get('http://melatupa.azurewebsites.net/regionLevels/' + regionLevelId + '/regions')
       .then(response => {             
           this.setState({ regions: response.data });
+          this.selectScenarioCollection(response.data[0].id);
       })
     }
 
-    selectScenarioCollection(scenarioCollectionId, regionLevelId) {
-      Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/' + scenarioCollectionId + '/regions' + regionLevelId)
+    selectScenarioCollection(scenarioCollectionId, regionlId) {
+      Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/' + scenarioCollectionId + '/regions' + regionlId)
       .then(response => { 
           this.setState({ scenarioCollections: response.data });
       });
