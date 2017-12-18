@@ -6,15 +6,17 @@ class Scenarios extends Component {
     constructor(props){
         super(props);
 
-        this.state = {
+        this.regionLevelSelectChange = this.regionLevelSelectChange.bind(this);
+
+   /*     this.state = {
             regionlevels: [],
             regions1: [],
             regions2: []
         };
-        this.ChosenOption = this.ChosenOption.bind(this);
+        this.ChosenOption = this.ChosenOption.bind(this); */
     }
 
-    componentDidMount() {
+ /*   componentDidMount() {
 
         //tilan kautta
         Axios.get('http://melatupa.azurewebsites.net/regionLevels')
@@ -36,61 +38,57 @@ class Scenarios extends Component {
                 this.setState({ regions2: response.data })
             });
 
-    }
+    } */
     
     ChosenOption(e){
         this.setState({ ChosenOption: e.target.value })
     }
 
+    regionLevelSelectChange(event)
+    {        
+        this.props.selectRegionLevel(event.target.value);
+    }
+
 
     render () {
         
-        const { regionlevels } = this.props;
+        const { regionLevels, regions } = this.props;
 
-        let regions = this.state.regionlevels;
+   /*     let regions = this.state.regionlevels;
         var alue1 = this.state.regions1;
-        var alue2 = this.state.regions2;
+        var alue2 = this.state.regions2; */
 
         return (
             <scenarios>
             <div className="scenarios">
-                <div className="skenaariot">
-                <div>Skenaariot</div>
-                </div>
-
-                <div className="aluetaso">
-                <div> Alue</div>
-                </div>
-
-                <div className="alue">
-                <div>Alue</div>
+                <div className="">
+                <p>Skenaariot</p>
                 </div>
 
                 <div className="skenaariokokoelma">
                 <div>Skenaariokokoelma</div>
                 </div>
-            </div>
 
+                <div className="aluetaso">
+                <p> Aluetaso </p>
+                        <select onChange={this.regionLevelSelectChange} >
+                            {
+                            regionLevels.map( e => <option key={ e.id } value={e.id}>{ e.name }</option>)
+                            }
+                        </select>
+                </div>
 
-            <div className="select1">
-                <select>
-                    {
-                    regions.map( e => <option key={ e.id }>{ e.name }</option>)
-                    }
-                </select>
-            </div>
+                <div className="alue">
+                <p>Alue</p>
+                    <div>
+                        <select>
+                            {
+                            regions.map( e => <option key={ e.id }>{ e.name }</option>)
+                            }
+                        </select>
+                    </div>
+                </div>
 
-            <div className="select2">
-                <select onChange={this.ChosenOption.bind(this)}>
-                    {
-                    regions.map( e => {
-                        if (<option key={ e.id === "1" }/>)
-                        return alue1.map(e => <option key={ e.id } >{ e.name }</option>)
-                        else
-                        return alue2.map(e => <option key={ e.id } >{ e.name }</option>)
-                    })
-                    }
-                </select>
             </div>
 
             </scenarios> 

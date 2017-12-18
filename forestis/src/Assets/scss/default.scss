@@ -21,44 +21,43 @@ Scenarios {
     width: 20%;
     background: $dark-green;
     height: 500px;
-
-    .skenaariot {
-        position: absolute;
-        top: 1px; left: 5px;
+    p{
+        position: relative;
+        top: 0px; left: 5px;
         font-size: 20px;
-        color: $white;
+        color: $white; 
     }
-    
+
     .aluetaso {
+        p{
+            position: relative;
+            top: 10px; left: 0px;
+            font-size: 12px;
+            color: $white; 
+        }
         position: absolute;
-        top: 35px; left: 15px;
-        font-size: 15px;
-        color: $white;
+        top: 30px; left: 15px;
+        font-size: 12px;
+        color: $black;
     }
-    
     .alue {
+        p{
+            position: relative;
+            top: 10px; left: 0px;
+            font-size: 12px;
+            color: $white; 
+        }
         position: absolute;
-        top: 95px; left: 15px;
-        font-size: 15px;
-        color: $white;
+        top: 80px; left: 15px;
+        font-size: 12px;
+        color: $black;
     }
 
     .skenaariokokoelma {
         position: absolute;
         top: 150px; left: 15px;
-        font-size: 15px;
+        font-size: 12px;
         color: $white;
-    }
-
-    .select1 {
-        position: absolute;
-        top: 60px; left: 15px;
-        font-size: 12px;
-    }
-    .select2 {
-        position: absolute;
-        top: 120px; left: 15px;
-        font-size: 12px;
     }
     
     .list {
@@ -68,6 +67,7 @@ Scenarios {
         color: $white;
     }
 }
+
     
 Indicators {
     position: absolute;
@@ -85,17 +85,16 @@ Indicators {
     }
 
     .puuntuotanto {
+        p{
+            position: relative;
+            top: 10px; left: 0px;
+            font-size: 12px;
+            color: $white; 
+        }s
         position: absolute;
         top: 35px; left: 15px;
         font-size: 15px;
         color: $white;
-    }
-
-
-    .select {
-        position: absolute;
-        top: 60px; left: 15px;
-        font-size: 12px;
     }
 }
 

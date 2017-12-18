@@ -4,57 +4,27 @@ import Scenarios from './Scenarios';
 
 class Indicators extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-            scenarioitems1: [],
-            scenarioitems2: []
-        } 
-    }
-
-    componentDidMount() {
-
-        //tilan kautta
-        Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/3/region/1')
-        .then(response => { 
-            console.log(response)
-        
-            this.setState({ scenarioitems1: response.data });
-        }), 
-            Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/4/region/1')
-            .then(response => { 
-                console.log(response)
-            
-                this.setState({ scenarioitems2: response.data });
-            });
-    }
 
     render () {
 
-        const { regionlevels } = this.props;
-
-        var scenarioitems1 = this.state.scenarioitems1;
-        var scenarioitems2 = this.state.scenarioitems2;
+        const { scenarioCollections } = this.props;
 
         return (
             <indicators>
                 <div className="indicators">
                     <div className="indikaattorit">
-                    <div>Indikaattorit</div>
+                    <p>Indikaattorit</p>
                     </div>
 
                     <div className="puuntuotanto">
-                    <div>Puuntuotanto</div>
-                    </div>
-
-                    <div className="select">
+                    <p>Puuntuotanto</p>
                         <select>
-                        {
-                          scenarioitems1.map(e => <option key={ e.id } >{ e.name }</option>)
-                        }
+                            {
+                            scenarioCollections.map( e => <option key={ e.id } value={e.id}>{ e.name }</option>)
+                            }
                         </select>
                     </div>
+
                 </div>
             </indicators>
         )

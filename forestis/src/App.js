@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 //includes
 import 'bootstrap/dist/css/bootstrap.min.css';
 //components
@@ -11,15 +12,48 @@ import './Assets/css/default.min.css';
 
 class App extends Component {
 
- /* constructor(props)
+  constructor(props)
   {
     super(props);
 
     this.state = {
-      view: "tasks"
+      regionLevels: [],
+      regions: [],
+      scenarioCollections: []
     };
-  } */
+  // Tilaa ylläpidetään tässä app.js juurikomponentissa ja sitten välitetään tiedot 
+  // propsien kautta lapsikomponenteille, kts. render metodi
+    this.selectRegionLevel = this.selectRegionLevel.bind(this);
+    this.selectScenarioCollection = this.selectScenarioCollection.bind(this);
+  } 
 
+  componentDidMount() {
+    
+    // Haetaan aluetason tiedot
+    Axios.get('http://melatupa.azurewebsites.net/regionLevels')
+      .then(response => { 
+          console.log(response)    
+          this.setState({ regionLevels: response.data });
+          // Ensimmäisellä kerralla valitaan automaattisesti ensimmäinen aluetaso, jolle haetaan alue
+          this.selectRegionLevel(response.data[0].id);
+          this.selectScenarioCollection(response.data[0].id);
+      });
+    }
+
+    selectRegionLevel(regionLevelId){
+      Axios.get('http://melatupa.azurewebsites.net/regionLevels/' + regionLevelId + '/regions')
+      .then(response => {             
+          this.setState({ regions: response.data });
+      })
+    }
+
+    selectScenarioCollection(scenarioCollectionId, regionLevelId) {
+      Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/' + scenarioCollectionId + '/regions' + regionLevelId)
+      .then(response => { 
+          this.setState({ scenarioCollections: response.data });
+      });
+  }
+  
   render() {
 
    /* let view;
@@ -35,8 +69,12 @@ class App extends Component {
           </div>
 
           <div className="row">
-                <Scenarios/>
-                <Indicators/>
+                <Scenarios regionLevels = {this.state.regionLevels}
+                           regions={this.state.regions}
+                           selectRegionLevel={this.selectRegionLevel} />
+                <Indicators scenarioCollections = {this.state.scenarioCollections}
+                            selectScenarioCollection = {this.state.selectScenarioCollection}
+                            selectRegionLevel={this.selectRegionLevel} />
                 <Chart/>
           </div>
         </div>
