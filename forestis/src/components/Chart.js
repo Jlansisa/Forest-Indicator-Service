@@ -37,7 +37,7 @@ class Chart extends Component {
             },
         
             title: {
-                text: { regionlevels }
+                text: this.props.title
             },
         
             subtitle: {

@@ -20,12 +20,16 @@ class App extends Component {
     this.state = {
       regionLevels: [],
       regions: [],
-      scenarioCollections: []
+      SelectedRegions: [],
+      scenarioCollections: [],
+   //   collections: []
     };
   // Tilaa ylläpidetään tässä app.js juurikomponentissa ja sitten välitetään tiedot 
   // propsien kautta lapsikomponenteille, kts. render metodi
     this.selectRegionLevel = this.selectRegionLevel.bind(this);
     this.selectScenarioCollection = this.selectScenarioCollection.bind(this);
+    this.selectRegion = this.selectRegion.bind(this);
+ //   this.Selectcollections = this.Selectcollections.bind(this);
   } 
 
   componentDidMount() {
@@ -37,6 +41,7 @@ class App extends Component {
           this.setState({ regionLevels: response.data });
           // Ensimmäisellä kerralla valitaan automaattisesti ensimmäinen aluetaso, jolle haetaan alue
           this.selectRegionLevel(response.data[0].id);
+          this.selectRegion(response.data[0].id);
       });
     }
 
@@ -44,21 +49,31 @@ class App extends Component {
       Axios.get('http://melatupa.azurewebsites.net/regionLevels/' + regionLevelId + '/regions')
       .then(response => {             
           this.setState({ regions: response.data });
-          this.selectScenarioCollection(response.data[0].id);
       })
     }
 
-    selectScenarioCollection(scenarioCollectionId, regionlId) {
-      Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/' + scenarioCollectionId + '/regions' + regionlId)
+    selectRegion(regionLevelId, regionId){
+      Axios.get('http://melatupa.azurewebsites.net/regionLevels/' + regionLevelId + '/regions')
+      .then(response => {             
+          this.setState({ SelectedRegions: response.data });
+      })
+    }
+
+    selectScenarioCollection(scenarioCollectionId, regionId) {
+      Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/' + scenarioCollectionId + '/regions' + regionId)
       .then(response => { 
           this.setState({ scenarioCollections: response.data });
       });
-  }
+    }
+
+/*    Selectcollections() {
+      Axios.get('http://melatupa.azurewebsites.net/scenarioCollection/')
+      .then(response => { 
+          this.setState({ collections: response.data });
+      });
+    } */
   
   render() {
-
-   /* let view;
-      view = (<Chart regionlevels={ this.state.regionlevels }/>);*/
 
     return (
       <div className="App">
@@ -72,11 +87,11 @@ class App extends Component {
           <div className="row">
                 <Scenarios regionLevels = {this.state.regionLevels}
                            regions={this.state.regions}
-                           selectRegionLevel={this.selectRegionLevel} />
+                           selectRegionLevel={this.selectRegionLevel} 
+                           selectRegion={this.selectRegion}/>
                 <Indicators scenarioCollections = {this.state.scenarioCollections}
-                            selectScenarioCollection = {this.state.selectScenarioCollection}
-                            selectRegionLevel={this.selectRegionLevel} />
-                <Chart/>
+                            selectScenarioCollection = {this.state.selectScenarioCollection}/>
+                <Chart title="testi"/>
           </div>
         </div>
     </div>

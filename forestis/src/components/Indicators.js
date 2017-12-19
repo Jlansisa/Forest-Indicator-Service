@@ -4,10 +4,20 @@ import Scenarios from './Scenarios';
 
 class Indicators extends Component {
 
+    constructor(props)
+    {
+        super(props);
+        this.ScenarioCollectionChange = this.ScenarioCollectionChange.bind(this);
+    }
+
+   ScenarioCollectionChange(event)
+    {        
+        this.props.selectScenarioCollection(event.target.value);
+    }
 
     render () {
 
-        const { scenarioCollections } = this.props;
+        const { scenarioCollections, SelectedRegions } = this.props;
 
         return (
             <indicators>
